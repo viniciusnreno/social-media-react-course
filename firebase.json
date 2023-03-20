@@ -1,0 +1,15 @@
+{
+  "hosting": {
+    "site": "social-media-react-course",
+    "public": "public",
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-east1"
+    }
+  }
+}
