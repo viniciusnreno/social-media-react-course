@@ -2,7 +2,6 @@
   "hosting": {
     "site": "social-media-react-course",
     "public": "public",
-    "source": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
