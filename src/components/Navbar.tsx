@@ -1,23 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
-import {
-  Navbar,
-  MobileNav,
-  IconButton,
-} from "@material-tailwind/react";
+import { Navbar, MobileNav, IconButton, } from "@material-tailwind/react";
 import { auth } from "../config/firebase"; 
 import { useAuthState } from 'react-firebase-hooks/auth'
  
 export default function Example() {
+  //hooks declarations
   const [openNav, setOpenNav] = useState(false);
-  const [isGuest, setIsGuest] = useState(true);
   const [user] = useAuthState(auth)
-  useEffect(() => {
-    if(user != null){
-      setIsGuest(false)
-    }
-  }, [user])
 
+  //useEffect for navbar open and close
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -25,6 +17,7 @@ export default function Example() {
     );
   }, []);
   
+  //list of items in menu
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <li>
@@ -34,7 +27,7 @@ export default function Example() {
           </span>
         </Link>
       </li>
-      {isGuest ? (
+      {!user ? (
           <li>
             <Link to="/Login">
               <span className="block py-2 pl-3 pr-4 text-blue-700 md:p-0 text-blue-700" aria-current="page">
@@ -44,6 +37,13 @@ export default function Example() {
           </li>
       ) : (
         <>
+          <li>
+            <Link to="/CreatePost">
+              <span className="block py-2 pl-3 pr-4 text-blue-700 md:p-0 text-blue-700" aria-current="page">
+                Create Post
+              </span>
+            </Link>
+          </li>
           <li>
             <Link to="/Profile">
               <span className="block py-2 pl-3 pr-4 text-blue-700 md:p-0 text-blue-700" aria-current="page">
